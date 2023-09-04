@@ -1,1 +1,1 @@
-API
+ChatSync's API
