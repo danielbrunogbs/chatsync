@@ -14,10 +14,6 @@ app.use(express.json());
 var httpServer = http.createServer(app);
 
 var server = new Server(httpServer, {
-    cors: {
-        origin: "http://localhost:4000",
-        methods: ["GET", "POST"]
-    },
     path: "/socket.io"
 });
 
