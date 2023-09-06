@@ -6,29 +6,24 @@ const socket = io.connect("localhost:4000")
 
 function App() {
   const [username, setUsername] = useState("")
-  const [channel , setChannel ] = useState("")
+  const channel = 1
 
   const joinChannel = () => {
-    if(username !== "" && channel !== ""){
-      socket.emit("join_channel", channel)
+    if(username !== ""){
+      socket.emit("join_channel", username)
     }
   };
 
   return (
     <div className="App">
- 
-      <h3>ChatSync</h3>
+      <h2>ChatSync</h2>
+
       <input type="text" placeholder="Apelido..." onChange = {
         (event) => {
           setUsername(event.target.value)
         }
       }/>
-      <input type="text" placeholder="ID do canal..." onChange = {
-        (event) => {
-          setChannel(event.target.value)
-        }
-      }/>
-      <button> Entrar no canal</button>
+      <button onClick={joinChannel}>Entrar no canal</button>
     </div>
   );
 }
