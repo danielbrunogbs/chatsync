@@ -1,0 +1,98 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+}
+
+/* Resize images */
+.avatar img {
+  width: 80%;
+  height: auto;
+}
+
+/* CUSTOM RADIO */
+/* 
+.rad{
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.rad > input{
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.rad > i{ 
+  display: inline-block;
+  vertical-align: middle;
+  height: 16px;
+  transition: 0.2s;
+  box-shadow: inset 0 0 0 8px #fff;
+  border: 1px solid gray;
+  background: gray;
+}
+.rad > i {
+  width:  16px;
+  border-radius: 50%;
+}
+.ckb > i {
+  width: 25px;
+  border-radius: 3px;
+}
+.rad:hover > i{
+  box-shadow: inset 0 0 0 3px #fff;
+  background: gray;
+}
+.rad > input:focus + i {
+  outline: 1px solid blue;
+}
+.rad > input:checked + i{
+  box-shadow: inset 0 0 0 3px #fff;
+  background: orange;
+} */
