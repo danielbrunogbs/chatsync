@@ -5,13 +5,20 @@ import {useState} from 'react'
 const socket = io.connect("localhost:4000")
 
 function App() {
-  const [username, setUsername] = useState("")
+
+  const [username, setUsername] = useState("");
+  const [selectedAvatar, setSelectedAvatar] = useState("other");
+
   const channel = 1
 
   const joinChannel = () => {
     if(username !== ""){
-      socket.emit("join_channel", username)
+      socket.emit("join_channel", username, selectedAvatar)
     }
+  };
+
+  const handleAvatarChange = (event) => {
+    setSelectedAvatar(event.target.value);
   };
 
   return (
@@ -28,18 +35,30 @@ function App() {
       <br/>
       <br/>
       <h2>Escolha seu avatar</h2>
-      <div class="container">
-        <label class="rad">
-        <input type="radio" name="rad1" value="a"/>
-        <i/><img class="avatar" src="https://a.imagem.app/bOkpZ1.png" alt="Option 1"/>
+      <div className="container">
+        <label className="rad">
+          <input type="radio" name="rad1" value="other"
+            checked={selectedAvatar === "other"}
+            onChange={handleAvatarChange}
+          />
+          <i/>
+          <img className="avatar" src="https://a.imagem.app/bOkpZ1.png" alt="Outro"/>
         </label>
-        <label class="rad">
-          <input type="radio" name="rad1" value="b" checked/>
-          <i/><img class="avatar" src="https://a.imagem.app/bOzA8W.png" alt="Option 2"/>
+        <label className="rad">
+          <input type="radio" name="rad1" value="male"
+            checked={selectedAvatar === "male"}
+            onChange={handleAvatarChange}
+          />
+          <i/>
+          <img className="avatar" src="https://a.imagem.app/bOzA8W.png" alt="Masculino"/>
         </label>
-        <label class="rad">
-          <input type="radio" name="rad1" value="c" checked/>
-          <i/><img class="avatar" src="https://a.imagem.app/bOkWxQ.png" alt="Option 3"/>
+        <label className="rad">
+          <input type="radio" name="rad1" value="female"
+            checked={selectedAvatar === "female"}
+            onChange={handleAvatarChange}
+          />
+          <i/>
+          <img className="avatar" src="https://a.imagem.app/bOkWxQ.png" alt="Feminino"/>
         </label>
       </div>
     </div>

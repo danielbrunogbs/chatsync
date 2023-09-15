@@ -14,10 +14,6 @@ app.use(express.json());
 var httpServer = http.createServer(app);
 
 var server = new Server(httpServer, {
-    cors: {
-        origin: "http://localhost:3000",
-        methods: ["GET", "POST"]
-    },
     path: "/socket.io"
 });
 
@@ -26,12 +22,7 @@ app.get("/", (req, res) => res.send({message: "Hello world!"}));
 server.on("connection", socket => {
 
     console.log(`Connection received: ${socket.id}`);
-    
-    socket.on("join_channel", (data) => { 
-        socket.join(data);
-        console.log(`${data} entrou no chat`)
-    });
-    
+
     socket.on("disconnect", () => console.log(`Disconnect: ${socket.id}`));
 
 });

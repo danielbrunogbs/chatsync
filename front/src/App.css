@@ -54,14 +54,14 @@
 }
 
 /* CUSTOM RADIO */
-
+/* 
 .rad{
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
-.rad > input{ /* HIDE ORG RADIO & CHECKBOX */
+.rad > input{
   position: absolute;
   opacity: 0;
   width: 0;
@@ -85,14 +85,14 @@
   width: 25px;
   border-radius: 3px;
 }
-.rad:hover > i{ /* HOVER <i> STYLE */
+.rad:hover > i{
   box-shadow: inset 0 0 0 3px #fff;
   background: gray;
 }
-.rad > input:focus + i { /* FOCUS <i> STYLE */
+.rad > input:focus + i {
   outline: 1px solid blue;
 }
-.rad > input:checked + i{ /* (RADIO CHECKED) <i> STYLE */
+.rad > input:checked + i{
   box-shadow: inset 0 0 0 3px #fff;
   background: orange;
-}
+} */
