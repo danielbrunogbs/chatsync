@@ -14,6 +14,7 @@ function Chat({socket, username, avatar}) {
             }
         
             await socket.emit("send_message", messageData);
+            setMessageList((list) => [...list, messageData])
         }
     };
     
@@ -31,7 +32,16 @@ function Chat({socket, username, avatar}) {
             </div>
             <div className="chat-body">
                 {messageList.map((messageContent) => {
-                    return <h1>{messageContent.message}</h1>
+                    return <div className="message" id={username === messageContent.author ? "you" : "other"}>
+                        <div>
+                            <div className="message-content">
+                                <p>{messageContent.message}</p>
+                            </div>
+                            <div className="message-data"> 
+                                <p id="author">{messageContent.author}</p> 
+                            </div>
+                        </div>
+                    </div>
                 })}
             </div>
             <div className="chat-footer">
