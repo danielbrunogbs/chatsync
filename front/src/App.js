@@ -11,12 +11,15 @@ function App() {
   const [username, setUsername] = useState("");
   const [selectedAvatar, setSelectedAvatar] = useState("other");
   const [showChat, setShowChat] = useState(false);
+  const [temp, setTemp] = useState("");
 
   const channel = 1
 
   const joinChannel = () => {
     if(username !== ""){
       socket.emit("join_channel", username, selectedAvatar);
+      localStorage.setItem("user", username);
+      localStorage.setItem("icon", selectedAvatar);
       setShowChat(true);
     }
   };
