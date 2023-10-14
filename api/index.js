@@ -18,6 +18,10 @@ app.use(express.json());
 var httpServer = http.createServer(app);
 
 var server = new Server(httpServer, {
+    cors: {
+        origin: process.env.CORS_HOST,
+        methods: ["GET", "POST"]
+    },
     path: "/socket.io"
 });
 
@@ -27,8 +31,8 @@ server.on("connection", socket => {
 
     console.log(`Connection received: ${socket.id}`);
 
-    socket.on("join_channel", (username, avatar) =>  JoinChannelController(socket, username));
-    socket.on("send_message", (data) => SendMessageController(socket, data));
+    socket.on("join_channel", async (username, avatar) => await JoinChannelController(socket, username));
+    socket.on("send_message", async (data) => await SendMessageController(socket, data));
 
     socket.on("disconnect", () => console.log(`Disconnect: ${socket.id}`));
 
