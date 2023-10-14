@@ -60,7 +60,7 @@ body {
 }
 .chat-window .chat-header {
   height: 45px;
-  border-radius: 6px;
+  border-radius: 2px;
   background: #263238;
   position: relative;
   cursor: pointer;
@@ -99,8 +99,8 @@ body {
 .chat-window .chat-body .message .message-content {
   width: auto;
   height: auto;
-  min-height: 40px;
-  max-width: 120px;
+  min-height: 35px;
+  max-width: 200px;
   background-color: #43a047;
   border-radius: 5px;
   color: white;
@@ -112,6 +112,7 @@ body {
   padding-left: 5px;
   overflow-wrap: break-word;
   word-break: break-word;
+  font-size: 16px;
 }
 
 #you {
@@ -138,17 +139,17 @@ body {
 
 #other .message-meta {
   justify-content: flex-end;
-  margin-right: 5px;
+  margin-right: 7px;
 }
 
 .message-meta #author {
-  margin-left: 10px;
+  margin-left: 0px;
   font-weight: bold;
 }
 
 .chat-window .chat-body .message .message-meta {
   display: flex;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .chat-window .chat-footer {
