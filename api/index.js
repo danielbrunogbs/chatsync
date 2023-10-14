@@ -7,6 +7,7 @@ const http = require("http");
 /* Controllers */
 const JoinChannelController = require("./app/controllers/JoinChannelController.js");
 const SendMessageController = require("./app/controllers/SendMessageController.js");
+const MessageController = require("./app/controllers/MessageController.js");
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ var server = new Server(httpServer, {
 });
 
 app.get("/", (req, res) => res.send({message: "Hello world!"}));
+app.get("/messages", MessageController);
 
 server.on("connection", socket => {
 
