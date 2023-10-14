@@ -1,10 +1,12 @@
-import dotenv from "dotenv"
-import express from "express"
-import { Server } from "socket.io"
-import cors from "cors"
-import http from "http"
-import JoinChannelController from "./app/controllers/JoinChannelController.js"
-import SendMessageController from "./app/controllers/SendMessageController.js"
+const dotenv = require("dotenv");
+const express = require("express");
+const { Server } = require("socket.io");
+const cors = require("cors");
+const http = require("http");
+
+/* Controllers */
+const JoinChannelController = require("./app/controllers/JoinChannelController.js");
+const SendMessageController = require("./app/controllers/SendMessageController.js");
 
 dotenv.config();
 
@@ -25,7 +27,7 @@ server.on("connection", socket => {
 
     console.log(`Connection received: ${socket.id}`);
 
-    socket.on("join_channel", (username, sex) => JoinChannelController(socket, username, sex));
+    socket.on("join_channel", (username, avatar) =>  JoinChannelController(socket, username));
     socket.on("send_message", (data) => SendMessageController(socket, data));
 
     socket.on("disconnect", () => console.log(`Disconnect: ${socket.id}`));
