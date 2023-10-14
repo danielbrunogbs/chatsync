@@ -1,6 +1,12 @@
-export default function SendMessageController(socket, data)
-{
-    socket.to(1).emit("receive_message", data);
+const { Message } = require("../models");
 
-    console.log(data);
+module.exports = async function SendMessageController(socket, data)
+{
+    var message = await Message.create({
+        author: data.author,
+        avatar: data.image,
+        message: data.message
+    });
+
+    socket.to(1).emit("receive_message", message);
 }

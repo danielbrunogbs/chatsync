@@ -1,8 +1,8 @@
-export default function JoinChannelController(socket, username, sex)
+module.exports = async function JoinChannelController(socket, username)
 {
     socket.join(1);
 
-    console.log(`${username} (${sex}) entrou no chat.`);
+    console.log(`${username} entrou no chat.`);
 
     socket.to(1).emit("enter_chat", username);
 }
