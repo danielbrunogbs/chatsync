@@ -8,5 +8,12 @@ module.exports = async function SendMessageController(socket, data)
         message: data.message
     });
 
-    socket.to(1).emit("receive_message", message);
+    socket.to(1).emit("receive_message", {
+        author: message.author,
+        avatar: message.avatar,
+        message: message.message,
+        type: "message",
+        createdAt: message.createdAt,
+        updatedAt: message.updatedAt
+    });
 }

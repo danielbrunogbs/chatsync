@@ -8,6 +8,7 @@ const http = require("http");
 const JoinChannelController = require("./app/controllers/JoinChannelController.js");
 const SendMessageController = require("./app/controllers/SendMessageController.js");
 const MessageController = require("./app/controllers/MessageController.js");
+const DisconnectChannelController = require("./app/controllers/DisconnectChannelController.js");
 
 dotenv.config();
 
@@ -35,8 +36,7 @@ server.on("connection", socket => {
 
     socket.on("join_channel", async (username, avatar) => await JoinChannelController(socket, username));
     socket.on("send_message", async (data) => await SendMessageController(socket, data));
-
-    socket.on("disconnect", () => console.log(`Disconnect: ${socket.id}`));
+    socket.on("disconnect", async () => await DisconnectChannelController(socket));
 
 });
 
