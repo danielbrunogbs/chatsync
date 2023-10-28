@@ -170,6 +170,12 @@ body {
   margin-top: -425px;
 }
 
+.limit-chars {
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .chat-window .chat-footer input {
   height: 100%;
   flex: 85%;
