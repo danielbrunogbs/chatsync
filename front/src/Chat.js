@@ -19,6 +19,7 @@ function Chat({socket, username, avatar, oldMessages}) {
                 author: username,
                 image: avatar,
                 message: currentMessage,
+                type: "message",
                 time: Date.now()
             }
         
@@ -60,7 +61,8 @@ function Chat({socket, username, avatar, oldMessages}) {
                     </div>
                 })}
                 {messageList.map((messageContent) => {
-                    return <div className="message" id={username === messageContent.author ? "you" : "other"}>
+                    return messageContent.type === "message" ? (
+                        <div className="message" id={username === messageContent.author ? "you" : "other"}>
                         <div>
                             <div className="message-meta"> 
                                 <p id="author">{messageContent.author}</p> 
@@ -70,6 +72,11 @@ function Chat({socket, username, avatar, oldMessages}) {
                             </div>
                         </div>
                     </div>
+                    ) : (
+                        <div className="message-event">
+                            <p>{messageContent.author + " " + messageContent.message}</p>
+                        </div>
+                    )
                 })}
             </ScrollToBottom>
             </div>
@@ -77,7 +84,7 @@ function Chat({socket, username, avatar, oldMessages}) {
                 <button onClick={toggleEmoji}>{String.fromCodePoint(0x1f60a)}</button>
                 <div className="inputMessage">
                     <input type="text" 
-                    placeholder="Hey..."
+                    placeholder="Mensagem..."
                     value={currentMessage}
                     onChange = {
                         (event) => {
