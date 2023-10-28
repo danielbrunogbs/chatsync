@@ -147,6 +147,12 @@ body {
   font-weight: bold;
 }
 
+.message-event {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .chat-window .chat-body .message .message-meta {
   display: flex;
   font-size: 11px;
