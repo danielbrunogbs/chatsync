@@ -14,6 +14,10 @@ function Chat({socket, username, avatar, oldMessages}) {
         setShowEmoji(!now);
     };
 
+    const resetRestChars = () => {
+        setRestChars(280);
+    }
+
     const sendMessage = async () => {
         if(currentMessage !== ""){
             const messageData = {
@@ -27,6 +31,7 @@ function Chat({socket, username, avatar, oldMessages}) {
             await socket.emit("send_message", messageData);
             setMessageList((list) => [...list, messageData]);
             setCurrentMessage("");
+            resetRestChars();
         }
     };
     
@@ -94,23 +99,24 @@ function Chat({socket, username, avatar, oldMessages}) {
                             setCurrentMessage(event.target.value);
                         }}
                         onKeyDown={(event) => {
-                            event.key === "Enter" && sendMessage();
-                            setRestChars(280);
+                            if (event.key === "Enter"){ 
+                                sendMessage();
+                            }
                         }}
                     />
                 </div>
-                    <button onClick={sendMessage}>&#9658;</button>
+                <button onClick={sendMessage}>&#9658;</button>
             </div>
-            {showEmoji ? (
+                {showEmoji ? (
                 <div className="emoji-pannel">
-                <Picker
-                onSelect={addEmoji}
-                emojiTooltip={true}
-                title="ChatSync"
-                emoji=":postbox:"
-                set="apple"
-                />
-            </div>
+                    <Picker
+                    onSelect={addEmoji}
+                    emojiTooltip={true}
+                    title="ChatSync"
+                    emoji=":postbox:"
+                    set="apple"
+                    />
+                </div>
             ) : (
             <p>
             </p>
