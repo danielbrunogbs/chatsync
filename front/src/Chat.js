@@ -7,6 +7,7 @@ function Chat({socket, username, avatar, oldMessages}) {
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
     const [showEmoji, setShowEmoji] = useState(false);
+    const [restChars, setRestChars] = useState(280);
     
     const toggleEmoji = () => {
         let now = showEmoji;
@@ -85,13 +86,16 @@ function Chat({socket, username, avatar, oldMessages}) {
                 <div className="inputMessage">
                     <input type="text" 
                     placeholder="Mensagem..."
+                    maxLength="280"
                     value={currentMessage}
                     onChange = {
                         (event) => {
+                            setRestChars(280 - event.target.value.length);
                             setCurrentMessage(event.target.value);
                         }}
                         onKeyDown={(event) => {
                             event.key === "Enter" && sendMessage();
+                            setRestChars(280);
                         }}
                     />
                 </div>
@@ -111,6 +115,7 @@ function Chat({socket, username, avatar, oldMessages}) {
             <p>
             </p>
             )}
+            <p className="limit-chars">{"Caract. Restantes: " + restChars}</p>
         </div>
     )
 }

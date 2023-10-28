@@ -66,6 +66,7 @@ function App() {
           <label className="rad">
             <input type="radio" name="rad1" value="other"
               checked={selectedAvatar === "other"}
+              maxLength="30"
               onChange={handleAvatarChange}
             />
             <i/>
