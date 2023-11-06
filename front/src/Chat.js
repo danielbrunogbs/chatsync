@@ -64,11 +64,30 @@ function Chat({socket, username, avatar, oldMessages}) {
                                 <p>{messageContent.message}</p>
                             </div>
                         </div>
+                        {messageContent.avatar ? (
+                            messageContent.avatar === "male" ? (
+                                <img className="avatar_chat" src="https://a.imagem.app/bOzA8W.png" alt="Masculino"/>
+                            ):(messageContent.avatar === "female" ? (
+                                <img className="avatar_chat" src="https://a.imagem.app/bOkWxQ.png" alt="Feminino"/>
+                            ):
+                            <img className="avatar_chat" src="https://a.imagem.app/bOkpZ1.png" alt="Outro"/>
+                            )
+                        ):(<p/>)}
                     </div>
                 })}
                 {messageList.map((messageContent) => {
+                    console.log(messageContent);
                     return messageContent.type === "message" ? (
                         <div className="message" id={username === messageContent.author ? "you" : "other"}>
+                        {username === messageContent.author ? (
+                            messageContent.image === "male" ? (
+                                <img className="avatar_chat" src="https://a.imagem.app/bOzA8W.png" alt="Masculino"/>
+                            ):(messageContent.image === "female" ? (
+                                <img className="avatar_chat" src="https://a.imagem.app/bOkWxQ.png" alt="Feminino"/>
+                            ):
+                            <img className="avatar_chat" src="https://a.imagem.app/bOkpZ1.png" alt="Outro"/>
+                            )
+                        ):(<p/>)}
                         <div>
                             <div className="message-meta"> 
                                 <p id="author">{messageContent.author}</p> 
@@ -77,6 +96,15 @@ function Chat({socket, username, avatar, oldMessages}) {
                                 <p>{messageContent.message}</p>
                             </div>
                         </div>
+                        {username !== messageContent.author ? (
+                            messageContent.avatar === "male" ? (
+                                <img className="avatar_chat" src="https://a.imagem.app/bOzA8W.png" alt="Masculino"/>
+                            ):(messageContent.avatar === "female" ? (
+                                <img className="avatar_chat" src="https://a.imagem.app/bOkWxQ.png" alt="Feminino"/>
+                            ):
+                            <img className="avatar_chat" src="https://a.imagem.app/bOkpZ1.png" alt="Outro"/>
+                            )
+                        ):(<p/>)}
                     </div>
                     ) : (
                         <div className="message-event">
